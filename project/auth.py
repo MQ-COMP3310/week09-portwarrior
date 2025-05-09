@@ -40,7 +40,7 @@ def signup_post():
     password = request.form.get('password')
 
     user = User.query.filter_by(email=email).all()
-    if user > 0: # if a user is found, we want to redirect back to signup page so user can try again
+    if user: # if a user is found, we want to redirect back to signup page so user can try again
         flash('Email address already exists')  # 'flash' function stores a message accessible in the template code.
         app.logger.debug("User email already exists")
         return redirect(url_for('auth.signup'))
